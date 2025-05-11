@@ -1,0 +1,54 @@
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.error {
+  color: var(--error-color);
+  text-align: center;
+  padding: 24px;
+}
+
+@media (max-width: 768px) {
+  .user-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, #00ffc3, #8a2be2);
+  background-clip: text; 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(0, 255, 195, 0.2);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, #00ffc3, #8a2be2);
+    border-radius: 4px;
+    animation: glowPulse 2.5s infinite ease-in-out;
+    box-shadow: 0 0 6px rgba(0, 255, 195, 0.4);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(0, 255, 195, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(0, 255, 195, 0.6);
+  }
+}

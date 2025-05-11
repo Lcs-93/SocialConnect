@@ -1,0 +1,43 @@
+<div class="container">
+  <div *ngIf="loading" class="loading"></div>
+  
+  <div *ngIf="!loading && error" class="error">
+    <p>{{error}}</p>
+    <a routerLink="/posts" class="btn">Back to Posts</a>
+  </div>
+  
+  <div *ngIf="!loading && !error && post" class="post-detail">
+    <div class="back-link">
+      <a routerLink="/posts" class="btn back-btn">&larr; Back to Posts</a>
+    </div>
+    
+    <div class="post-card">
+      <div class="post-header">
+        <h2 class="post-title">{{post.title}}</h2>
+        <p *ngIf="author" class="post-author" [routerLink]="['/users', post.userId]">
+          <span class="by">by</span> {{author.name}}
+        </p>
+      </div>
+      
+      <div class="post-content">
+        <p class="post-body">{{post.body}}</p>
+      </div>
+    </div>
+    
+    <h3 class="section-title">Comments</h3>
+    
+    <div *ngIf="loadingComments" class="loading"></div>
+    
+    <div *ngIf="!loadingComments && commentsError" class="error">
+      <p>{{commentsError}}</p>
+    </div>
+    
+    <div *ngIf="!loadingComments && !commentsError && comments.length === 0" class="no-comments">
+      <p>No comments on this post yet.</p>
+    </div>
+    
+    <div *ngIf="!loadingComments && !commentsError && comments.length > 0" class="comments-section">
+      <app-comment-card *ngFor="let comment of comments" [comment]="comment"></app-comment-card>
+    </div>
+  </div>
+</div>

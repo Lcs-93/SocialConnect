@@ -1,0 +1,82 @@
+$user-bg: #131417;
+$user-glow: #00ffc3;
+$user-glow-secondary: #8a2be2;
+$text-light: #f8f8f8;
+$text-muted: #aaaaaa;
+
+.user-card {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  padding: 1.2rem;
+  background: $user-bg;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, $user-glow, $user-glow-secondary);
+    opacity: 0.08;
+    z-index: -1;
+    filter: blur(10px);
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+    &::before {
+      opacity: 0.25;
+    }
+  }
+}
+
+.user-card-content {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, $user-glow, $user-glow-secondary);
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba($user-glow, 0.6);
+}
+
+.user-info {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $text-light;
+  margin: 0;
+}
+
+.user-username {
+  font-size: 0.95rem;
+  color: $user-glow;
+  margin: 3px 0;
+}
+
+.user-email {
+  font-size: 0.85rem;
+  color: $text-muted;
+}

@@ -1,0 +1,9 @@
+<div class="comment-card">
+  <div class="comment-header">
+    <h4 class="comment-name">{{comment.name}}</h4>
+    <p class="comment-email" [routerLink]="['/user-by-email', comment.email]">
+      {{comment.email}}
+    </p>
+  </div>
+  <p class="comment-body">{{comment.body}}</p>
+</div>

@@ -1,0 +1,12 @@
+<div class="card post-card">
+  <div class="post-header">
+    <h3 class="post-title" [routerLink]="['/posts', post.id]">{{post.title}}</h3>
+    <p *ngIf="user" class="post-author" [routerLink]="['/users', post.userId]">
+      <span class="by">by</span> {{user.name}}
+    </p>
+  </div>
+  <p class="post-body">{{getExcerpt()}}</p>
+  <div class="post-footer">
+    <a [routerLink]="['/posts', post.id]" class="btn read-more">Read more</a>
+  </div>
+</div>
